@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer';
 export const openBrowser = async () => {
     return await puppeteer.launch({
         headless: true,
-        args: ["--start-maximized"],
+        args: ["--start-maximized", "--no-sandbox", "--disable-setuid-sandbox"]
     });
 }
 

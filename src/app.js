@@ -18,7 +18,7 @@ if (!fs.existsSync(historyFile)) {
 
         const history = JSON.parse(fs.readFileSync(historyFile, 'utf8'))
         if(history.lastPostUtime < res.utime){
-            send(`https://www.facebook.com/${res.url}`)
+            send(`https://www.facebook.com${res.url}`)
             fs.writeFileSync(historyFile, JSON.stringify({lastPostUtime: res.utime}))
         }
 
