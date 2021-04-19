@@ -16,7 +16,7 @@ export const createPage = async (browser) => {
 
     await page.setUserAgent(ua);
     await page.setExtraHTTPHeaders({
-        'accept-language': 'en-US;q=0.7,en;q=0.3'
+        'accept-language': 'pl-PL;q=0.7,en;q=0.3'
     });
 
     await page.setJavaScriptEnabled(true);

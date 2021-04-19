@@ -14,12 +14,14 @@ const getLastPost = async (address) => {
         await closeBtn.evaluate(btn => btn.click());
     }
 
-    await page.waitFor('._5pcq')
+    await page.waitForSelector('._5pcq')
     const timestampHandler = await (await page.$$('._5pcq'))[0];
-    const url = await page.evaluate(
+    let url = await page.evaluate(
         link => link.getAttribute('href'),
         timestampHandler
     )
+
+    url = url.substring(0, url.indexOf("?"))
 
     const nodeChildren = await page.evaluateHandle(el => el.children, timestampHandler);
 
@@ -28,11 +30,14 @@ const getLastPost = async (address) => {
         nodeChildren
     )
 
+    const contentHandler = await (await page.$$('._5pbx'))[0];
+    let content = await page.evaluate(el => el.textContent, contentHandler)
     await browser.close()
 
     return {
         utime: parseInt(utime),
-        url
+        url,
+        content
     }
 }
 
