@@ -1,7 +1,7 @@
 export default {
-    slackToken: 'xoxb-270122152483-1009292921120-OtEsMyji0sQQVP7eBbX1PyCI',
-    facebookPage: 'https://www.facebook.com/piwapodwiaduktem',
-    channel: '#craft-lovers'
+    slackToken: process.env['slackToken'],
+    facebookPage: process.env['facebookPage'],
+    channel: process.env['channel']
 }
 
 // export default {
