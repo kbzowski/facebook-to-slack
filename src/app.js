@@ -21,7 +21,7 @@ const check = async () => {
 
     const history = JSON.parse(fs.readFileSync(historyPath, 'utf8'))
     if (history.lastPostUtime < res.utime) {
-        send(`https://www.facebook.com${res.url}\n${res.content}`)
+        send(`https://www.facebook.com${res.url}`)
         fs.writeFileSync(historyPath, JSON.stringify({lastPostUtime: res.utime}))
     }
 

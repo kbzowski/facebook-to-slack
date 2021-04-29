@@ -1,0 +1,14 @@
+services:
+  f2s:
+    build: .
+    container_name: facebook2slack
+    restart: always
+    init: true
+    volumes:
+      - ./data:/data
+    environment:
+      - DATA_DIR=/data
+      - SLACK_TOKEN=$SLACK_TOKEN
+      - FACEBOOK_PAGE=$FACEBOOK_PAGE
+      - SLACK_CHANNEL=$SLACK_CHANNEL
+    env_file: .env

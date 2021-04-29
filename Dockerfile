@@ -1,4 +1,4 @@
-FROM node:13-buster
+FROM node:16-buster
 
 RUN apt-get update \
     && apt-get install -y wget gnupg \
@@ -12,9 +12,14 @@ RUN apt-get update \
 WORKDIR /usr/src/f2s
 
 COPY . .
-RUN chown -R node:node /usr/src/f2s
+#RUN chown -R node:node /usr/src/f2s
 
-USER node
+#ENV TINI_VERSION v0.19.0
+#ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+#RUN chmod +x /tini
+
+#USER node
 RUN npm i --only=production
 
+#ENTRYPOINT ["/tini", "--"]
 CMD [ "node", "src/app.js" ]

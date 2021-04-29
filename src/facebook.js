@@ -30,14 +30,14 @@ const getLastPost = async (address) => {
         nodeChildren
     )
 
-    const contentHandler = await (await page.$$('._5pbx'))[0];
-    let content = await page.evaluate(el => el.textContent, contentHandler)
-    await browser.close()
+    // const contentHandler = await (await page.$$('._5pbx'))[0];
+    // let content = await page.evaluate(el => el.textContent, contentHandler)
+    await page.close();
+    await browser.close();
 
     return {
         utime: parseInt(utime),
         url,
-        content
     }
 }
 
